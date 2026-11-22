@@ -16,4 +16,10 @@ class AuthService {
     final credencial = GoogleAuthProvider.credential(idToken: idToken);
     await FirebaseAuth.instance.signInWithCredential(credencial);
   }
+
+  Future<void> cerrarSesion() async {
+    await _inicializacion;
+    await GoogleSignIn.instance.signOut();
+    await FirebaseAuth.instance.signOut();
+  }
 }
