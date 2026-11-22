@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:objetos_perdidos/pages/login_page.dart'; // PARA VER COMO QUEDA
+import 'package:objetos_perdidos/pages/auth_wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           //estos colores son temporales(ninguno me gusta)
-          seedColor: const Color(0xFF0F4C5C),
-          secondary: const Color(0xFFFFB38A),
+          seedColor: const Color(0xFF046C4E),
+          secondary: const Color(0xFFD6C6FF),
         ),
       ),
-      home: const LoginPage(),
+      home: const AuthWrapper(),
     );
   }
 }

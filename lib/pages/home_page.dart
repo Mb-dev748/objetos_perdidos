@@ -10,8 +10,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    AuthService().currentUser().then((currentU) {
+      if (!mounted) return;
+      setState(() {
+        user = currentU;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final colores = Theme.of(context).colorScheme;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: colores.primary,
+        foregroundColor: colores.secondary,
+        title: Text(user?.displayName ?? 'Cargando...'),
+        actions: [
+          IconButton(
+            onPressed: () => AuthService().cerrarSesion(),
+            icon: const Icon(Icons.logout),
+            tooltip: 'Cerrar sesion',
+          ),
+        ],
+      ),
+      body: const Center(child: Text('[PUBLICACIONES]')),
+    );
   }
 }
