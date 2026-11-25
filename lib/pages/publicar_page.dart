@@ -48,7 +48,7 @@ class _PublicarPageState extends State<PublicarPage> {
       source: origen,
       maxWidth: 1024,
       maxHeight: 1024,
-      imageQuality: 70,
+      imageQuality: 75,
     );
     if (archivo == null) return;
     final bytes = await archivo.readAsBytes();
@@ -177,7 +177,6 @@ class _PublicarPageState extends State<PublicarPage> {
               Text('La foto es obligatoria', style: estiloError),
             const SizedBox(height: 16),
 
-            // el titulo
             TextFormField(
               controller: tituloCtrl,
               decoration: const InputDecoration(
@@ -189,7 +188,6 @@ class _PublicarPageState extends State<PublicarPage> {
             ),
             const SizedBox(height: 12),
 
-            // la descripcion
             TextFormField(
               controller: descripcionCtrl,
               maxLines: 3,
@@ -202,7 +200,6 @@ class _PublicarPageState extends State<PublicarPage> {
             ),
             const SizedBox(height: 12),
 
-            // si esta periddo o no
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(
                 labelText: 'tipo',
@@ -220,7 +217,6 @@ class _PublicarPageState extends State<PublicarPage> {
             ),
             const SizedBox(height: 12),
 
-            // CATEGORÍA
             FutureBuilder<List<String>>(
               future: categoriasFuture,
               builder: (context, snapshot) {
@@ -248,7 +244,6 @@ class _PublicarPageState extends State<PublicarPage> {
             ),
             const SizedBox(height: 12),
 
-            // el lugar donde esta perdido
             TextFormField(
               controller: lugarCtrl,
               decoration: const InputDecoration(
@@ -260,7 +255,6 @@ class _PublicarPageState extends State<PublicarPage> {
             ),
             const SizedBox(height: 12),
 
-            //elegir  la fecha y la hora
             OutlinedButton.icon(
               onPressed: elegirFecha,
               icon: const Icon(Icons.event),
@@ -272,7 +266,6 @@ class _PublicarPageState extends State<PublicarPage> {
               Text('Indica la fecha y hora', style: estiloError),
             const SizedBox(height: 24),
 
-            // el boton de publicar
             guardando
                 ? const Center(child: CircularProgressIndicator())
                 : FilledButton.icon(

@@ -45,7 +45,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
 
-      //la lista de publicacionbes --->
       body: Column(
         children: [
           Padding(
@@ -78,11 +77,6 @@ class _HomePageState extends State<HomePage> {
             child: StreamBuilder(
               stream: FsService().publicaciones(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                //esto es solo xq no encuentro un error
-                if (snapshot.hasError) {
-                  return Text('error: ${snapshot.error}');
-                }
-                //-----------------------
                 if (!snapshot.hasData ||
                     snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -152,7 +146,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
 
-      // boton publicar
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: colores.secondary,
         foregroundColor: colores.primary,
