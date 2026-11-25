@@ -77,9 +77,11 @@ class _HomePageState extends State<HomePage> {
             child: StreamBuilder(
               stream: FsService().publicaciones(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                //esto es solo xq no encuentro un error
                 if (snapshot.hasError) {
                   return Text('error: ${snapshot.error}');
                 }
+                //-----------------------
                 if (!snapshot.hasData ||
                     snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());

@@ -10,11 +10,8 @@ class FsService {
         .snapshots();
   }
 
-  Stream<DocumentSnapshot> publicacion(String id) {
-    return FirebaseFirestore.instance
-        .collection('publicaciones')
-        .doc(id)
-        .snapshots();
+  Future<DocumentSnapshot> publicacion(String id) {
+    return FirebaseFirestore.instance.collection('publicaciones').doc(id).get();
   }
 
   Future<List<String>> categorias() async {
