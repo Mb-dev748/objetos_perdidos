@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FsSerevice {
+class FsService {
   Stream<QuerySnapshot> publicaciones() {
     return FirebaseFirestore.instance
         .collection('publicaciones')
@@ -19,7 +19,7 @@ class FsSerevice {
 
   Future<List<String>> categorias() async {
     var snapshot = await FirebaseFirestore.instance
-        .collection('categorias')
+        .collection('categoria')
         .orderBy('nombre')
         .get();
     return snapshot.docs.map((doc) => doc['nombre'] as String).toList();
@@ -44,7 +44,7 @@ class FsSerevice {
       'lugar': lugar,
       'fecha': Timestamp.fromDate(fecha),
       'foto': Blob(foto),
-      'estado': 'vigente',
+      'estado': 'Vigente',
       'autorUid': autorUid,
       'autorNombre': autorNombre,
     });
@@ -57,7 +57,7 @@ class FsSerevice {
         .update({'estado': 'Devuelto'});
   }
 
-  Future<void> borrarPublicaciones(String id) {
+  Future<void> borrarPublicacion(String id) {
     return FirebaseFirestore.instance
         .collection('publicaciones')
         .doc(id)
