@@ -4,6 +4,7 @@ import 'package:objetos_perdidos/services/auth_service.dart';
 import 'package:objetos_perdidos/pages/publicar_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:objetos_perdidos/services/fs_service.dart';
+import 'package:objetos_perdidos/pages/detalle_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -106,6 +107,15 @@ class _HomePageState extends State<HomePage> {
                     return Opacity(
                       opacity: devuelto ? 0.5 : 1,
                       child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  DetallePage(publicacionId: publicacion.id),
+                            ),
+                          );
+                        },
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: Image.memory(
